@@ -17,6 +17,7 @@ class OCV
 
 		#阿部さん召喚
 		abe = CvMat.load(ARGV[0]) # Read the file.
+		#abe = CvMat.load("abe.png") # Read the file.
 
 		#顔認識
 		loop do
