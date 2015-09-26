@@ -21,7 +21,7 @@ class OCV
 		#顔認識
 		loop do
 			image = capture.query
-			image = image.resize OpenCV::CvSize.new 640, 360
+			image = image.resize OpenCV::CvSize.new 1280, 720
 			detector.detect_objects(image).each do |rect|
     			puts "detect!! : #{rect.top_left}, #{rect.top_right}, #{rect.bottom_left}, #{rect.bottom_right}"
     			image.rectangle! rect.top_left, rect.bottom_right, :color => OpenCV::CvColor::Red
@@ -30,7 +30,7 @@ class OCV
     			image.set_roi rect
     			resize_abe = abe.resize rect
     			(image.rows*image.cols).times do |i|
-    				image[i] = resize_abe[i]
+    				image[i] = resize_abe[i] if resize_abe[i][0] != 241.0 && resize_abe[i][1] != 242.0 && resize_abe[i][2] != 243.0
     			end
     			image.reset_roi
 
